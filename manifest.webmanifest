@@ -1,0 +1,35 @@
+{
+  "id": "/MCHKY2026/",
+  "name": "MISS นมแม่ ตำบลคำใหญ่",
+  "short_name": "MISS นมแม่",
+  "description": "แอพสำหรับ อสม.ตำบลคำใหญ่ ลงเยี่ยมและดูแลมารดาและทารก",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui", "browser"],
+  "background_color": "#f4fbf8",
+  "theme_color": "#0f9b8e",
+  "orientation": "portrait",
+  "lang": "th",
+  "categories": ["health", "productivity"],
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

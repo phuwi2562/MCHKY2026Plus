@@ -1,0 +1,1247 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f9b8e">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="MISS นมแม่">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon-192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <title>MISS นมแม่ ตำบลคำใหญ่</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --teal: #0f9b8e;
+      --teal-dark: #08786f;
+      --mint: #dff8ef;
+      --coral: #ef6f6c;
+      --amber: #f5b84b;
+      --ink: #17323a;
+      --muted: #64757c;
+      --line: #d9e8e5;
+      --paper: #fffdfa;
+      --wash: #f4fbf8;
+      --blue: #3f7bdc;
+      --ok: #16875d;
+      --danger: #d74747;
+      --shadow: 0 16px 36px rgba(18, 64, 68, .13);
+      font-family: "Noto Sans Thai", "Leelawadee UI", Tahoma, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #edf9f4 0%, #fff9f1 48%, #f5fbff 100%);
+      color: var(--ink);
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+    }
+
+    .app {
+      width: min(100%, 430px);
+      min-height: 100vh;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, .72);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 0 1px rgba(15, 155, 142, .08);
+    }
+
+    .screen {
+      min-height: 100vh;
+      padding: 18px 16px 92px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: var(--teal);
+      color: #fff;
+      font-weight: 900;
+      box-shadow: 0 10px 22px rgba(15, 155, 142, .28);
+      flex: 0 0 auto;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 1.08rem;
+      line-height: 1.2;
+    }
+
+    .brand p {
+      margin: 2px 0 0;
+      color: var(--muted);
+      font-size: .78rem;
+      line-height: 1.25;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 0 0 auto;
+    }
+
+    .round-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: #ffffff;
+      color: var(--teal-dark);
+      border: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 8px 20px rgba(30, 74, 75, .08);
+    }
+
+    .install-btn {
+      min-width: 42px;
+    }
+
+    .hero {
+      background: linear-gradient(138deg, #ffffff 0%, #e2f7ed 58%, #fff1e3 100%);
+      border: 1px solid rgba(15, 155, 142, .18);
+      border-radius: 8px;
+      padding: 16px;
+      min-height: 218px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1.2fr .9fr;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .hero h2 {
+      margin: 0;
+      font-size: 1.55rem;
+      line-height: 1.18;
+      max-width: 12ch;
+    }
+
+    .hero p {
+      margin: 10px 0 14px;
+      color: #33575e;
+      font-size: .9rem;
+      line-height: 1.5;
+    }
+
+    .hero img {
+      width: 135%;
+      max-width: 210px;
+      justify-self: center;
+      transform: translateX(7px);
+      filter: drop-shadow(0 16px 16px rgba(34, 69, 73, .14));
+    }
+
+    .primary {
+      min-height: 42px;
+      border-radius: 8px;
+      padding: 0 14px;
+      background: var(--teal);
+      color: #fff;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 10px 20px rgba(15, 155, 142, .25);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 14px 0;
+    }
+
+    .stat {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px 9px;
+      min-height: 86px;
+      box-shadow: 0 10px 24px rgba(55, 91, 95, .08);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.5rem;
+      line-height: 1.1;
+      color: var(--teal-dark);
+    }
+
+    .stat span {
+      display: block;
+      color: var(--muted);
+      font-size: .76rem;
+      line-height: 1.25;
+      margin-top: 6px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 20px 0 10px;
+    }
+
+    .section-title h3 {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .section-title small {
+      color: var(--muted);
+    }
+
+    .visit-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .visit-card,
+    .guide-card,
+    .form-panel {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 10px 24px rgba(55, 91, 95, .08);
+    }
+
+    .visit-card {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 11px;
+      padding: 12px;
+    }
+
+    .avatar {
+      width: 46px;
+      height: 46px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      background: var(--mint);
+      color: var(--teal-dark);
+      font-weight: 900;
+    }
+
+    .visit-card h4 {
+      margin: 0;
+      font-size: .95rem;
+    }
+
+    .visit-card p {
+      margin: 3px 0 0;
+      color: var(--muted);
+      font-size: .78rem;
+      line-height: 1.35;
+    }
+
+    .tag {
+      border-radius: 999px;
+      padding: 5px 9px;
+      color: #fff;
+      font-size: .7rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .tag.red {
+      background: var(--danger);
+    }
+
+    .tag.yellow {
+      background: var(--amber);
+      color: #573c05;
+    }
+
+    .tag.green {
+      background: var(--ok);
+    }
+
+    .tab {
+      display: none;
+    }
+
+    .tab.active {
+      display: block;
+    }
+
+    .segmented {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      padding: 5px;
+      background: rgba(15, 155, 142, .1);
+      border-radius: 8px;
+      margin: 12px 0;
+    }
+
+    .segmented button {
+      min-height: 38px;
+      border-radius: 7px;
+      background: transparent;
+      color: var(--teal-dark);
+      font-size: .8rem;
+      font-weight: 800;
+    }
+
+    .segmented button.active {
+      background: #fff;
+      box-shadow: 0 5px 14px rgba(35, 80, 82, .12);
+    }
+
+    .guide-grid {
+      display: grid;
+      gap: 10px;
+    }
+
+    .guide-card {
+      padding: 14px;
+    }
+
+    .guide-card header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: #eff7ff;
+      color: var(--blue);
+      flex: 0 0 auto;
+    }
+
+    .guide-card h4 {
+      margin: 0;
+      font-size: .95rem;
+    }
+
+    .guide-card ul {
+      margin: 8px 0 0;
+      padding-left: 20px;
+      color: #37555c;
+      font-size: .86rem;
+      line-height: 1.65;
+    }
+
+    .form-panel {
+      padding: 14px;
+    }
+
+    .sync-panel {
+      margin-bottom: 12px;
+    }
+
+    .sync-panel p {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: .82rem;
+      line-height: 1.55;
+    }
+
+    .sheet-chip {
+      display: inline-flex;
+      align-items: center;
+      max-width: 100%;
+      min-height: 32px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: var(--mint);
+      color: var(--teal-dark);
+      font-size: .74rem;
+      font-weight: 800;
+      word-break: break-all;
+    }
+
+    .status-line {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: .78rem;
+      line-height: 1.45;
+    }
+
+    .field {
+      display: grid;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    label {
+      color: #31555b;
+      font-weight: 800;
+      font-size: .82rem;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      min-height: 44px;
+      padding: 10px 12px;
+      background: #fff;
+      color: var(--ink);
+      outline: none;
+    }
+
+    textarea {
+      min-height: 86px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(15, 155, 142, .12);
+    }
+
+    .checks {
+      display: grid;
+      gap: 8px;
+      margin: 10px 0 14px;
+    }
+
+    .check {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 9px;
+      align-items: start;
+      padding: 10px;
+      background: var(--wash);
+      border: 1px solid #e4efed;
+      border-radius: 8px;
+      color: #314f55;
+      font-size: .84rem;
+      line-height: 1.45;
+    }
+
+    .check input {
+      width: 18px;
+      height: 18px;
+      min-height: 0;
+      accent-color: var(--teal);
+      margin-top: 2px;
+    }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: center;
+      margin-top: 12px;
+    }
+
+    .sync-actions {
+      grid-template-columns: 1fr 1fr auto;
+    }
+
+    .ghost {
+      min-height: 42px;
+      border-radius: 8px;
+      padding: 0 14px;
+      background: #fff;
+      color: var(--teal-dark);
+      border: 1px solid var(--line);
+      font-weight: 800;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 82px;
+      transform: translateX(-50%) translateY(20px);
+      width: min(360px, calc(100% - 36px));
+      padding: 12px 14px;
+      border-radius: 8px;
+      background: #18383f;
+      color: #fff;
+      opacity: 0;
+      pointer-events: none;
+      transition: .25s ease;
+      z-index: 4;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .install-sheet {
+      position: fixed;
+      inset: 0;
+      z-index: 6;
+      background: rgba(15, 38, 43, .38);
+      display: grid;
+      align-items: end;
+      padding: 14px;
+    }
+
+    .install-card {
+      width: min(100%, 402px);
+      margin: 0 auto;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: 0 18px 44px rgba(17, 52, 57, .24);
+    }
+
+    .install-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.06rem;
+    }
+
+    .install-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: .88rem;
+    }
+
+    .install-steps {
+      margin: 12px 0;
+      padding-left: 22px;
+      color: #33575e;
+      line-height: 1.65;
+      font-size: .9rem;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: min(100%, 430px);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
+      padding: 9px 10px calc(9px + env(safe-area-inset-bottom));
+      background: rgba(255, 255, 255, .94);
+      border-top: 1px solid var(--line);
+      backdrop-filter: blur(16px);
+      z-index: 3;
+    }
+
+    .nav-btn {
+      min-height: 54px;
+      border-radius: 8px;
+      background: transparent;
+      color: var(--muted);
+      display: grid;
+      place-items: center;
+      gap: 2px;
+      font-size: .7rem;
+      font-weight: 800;
+    }
+
+    .nav-btn svg {
+      width: 22px;
+      height: 22px;
+      stroke-width: 2.3;
+    }
+
+    .nav-btn.active {
+      background: var(--mint);
+      color: var(--teal-dark);
+    }
+
+    .empty {
+      text-align: center;
+      padding: 18px;
+      color: var(--muted);
+      background: rgba(255, 255, 255, .75);
+      border: 1px dashed var(--line);
+      border-radius: 8px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 360px) {
+      .screen {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: unset;
+      }
+
+      .hero h2 {
+        max-width: none;
+        font-size: 1.35rem;
+      }
+
+      .hero img {
+        width: 64%;
+        transform: none;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <section id="home" class="screen tab active">
+      <div class="topbar">
+        <div class="brand">
+          <div class="mark">M</div>
+          <div>
+            <h1>MISS นมแม่</h1>
+            <p>ดูแลมารดาและทารก ตำบลคำใหญ่</p>
+          </div>
+        </div>
+        <div class="top-actions">
+          <button class="round-btn" type="button" aria-label="แจ้งเตือน">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+          </button>
+          <button class="round-btn install-btn" type="button" id="installApp" aria-label="ติดตั้งแอพ">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="hero">
+        <div>
+          <h2>เยี่ยมบ้านแม่และลูกอย่างมั่นใจ</h2>
+          <p>เครื่องมือสำหรับ อสม.ตำบลคำใหญ่ บันทึกเยี่ยม ให้คำแนะนำ และติดตามหญิงตั้งครรภ์ หญิงหลังคลอด และเด็กแรกเกิด</p>
+          <button class="primary" type="button" data-open="record">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"><path d="M12 5v14M5 12h14"/></svg>
+            เริ่มบันทึกเยี่ยม
+          </button>
+        </div>
+        <img src="osm-cartoon.png" alt="การ์ตูน อสม.">
+      </div>
+
+      <div class="grid" aria-label="สรุปวันนี้">
+        <div class="stat"><strong>8</strong><span>ครัวเรือนต้องติดตาม</span></div>
+        <div class="stat"><strong>3</strong><span>นัดเยี่ยมหลังคลอด 7 วัน</span></div>
+        <div class="stat"><strong>1</strong><span>สัญญาณเฝ้าระวัง</span></div>
+      </div>
+
+      <div class="section-title">
+        <h3>นัดเยี่ยมวันนี้</h3>
+        <small>อาทิตย์ 7 มิ.ย. 2569</small>
+      </div>
+      <div class="visit-list">
+        <article class="visit-card">
+          <div class="avatar">น</div>
+          <div>
+            <h4>นางนภา บ้านหมู่ 4</h4>
+            <p>หลังคลอด 3 วัน ตรวจน้ำคาวปลา เต้านม แผล และการเข้าเต้า</p>
+          </div>
+          <span class="tag red">ด่วน</span>
+        </article>
+        <article class="visit-card">
+          <div class="avatar">ม</div>
+          <div>
+            <h4>แม่มะลิ บ้านหมู่ 8</h4>
+            <p>ทารก 12 วัน ชั่งน้ำหนัก ประเมินตัวเหลือง สะดือ และอุณหภูมิ</p>
+          </div>
+          <span class="tag yellow">ติดตาม</span>
+        </article>
+        <article class="visit-card">
+          <div class="avatar">ส</div>
+          <div>
+            <h4>น.ส.สายฝน บ้านหมู่ 2</h4>
+            <p>ตั้งครรภ์ 28 สัปดาห์ ย้ำฝากครรภ์ โภชนาการ และนับลูกดิ้น</p>
+          </div>
+          <span class="tag green">ปกติ</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="guide" class="screen tab">
+      <div class="topbar">
+        <div class="brand">
+          <div class="mark">✓</div>
+          <div>
+            <h1>คู่มือเยี่ยมบ้าน</h1>
+            <p>แนวทางให้คำแนะนำตามมาตรฐานกรมอนามัย</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="segmented" role="tablist" aria-label="เลือกกลุ่มดูแล">
+        <button class="active" type="button" data-guide="newborn">แรกเกิด</button>
+        <button type="button" data-guide="pregnant">ตั้งครรภ์</button>
+        <button type="button" data-guide="postpartum">หลังคลอด</button>
+      </div>
+
+      <div class="guide-grid guide-set active" data-set="newborn">
+        <article class="guide-card">
+          <header><div class="icon">🍼</div><h4>นมแม่และการเข้าเต้า</h4></header>
+          <ul>
+            <li>ให้กินนมแม่อย่างเดียว 6 เดือน ไม่ต้องเสริมน้ำ</li>
+            <li>สังเกตอมลานนมลึก คางชิดเต้า ได้ยินเสียงกลืน</li>
+            <li>ปัสสาวะ 6 ครั้งขึ้นไปต่อวันหลังน้ำนมมา ถือเป็นสัญญาณดี</li>
+          </ul>
+        </article>
+        <article class="guide-card">
+          <header><div class="icon">🌡</div><h4>สัญญาณอันตรายทารก</h4></header>
+          <ul>
+            <li>ซึม ไม่ดูดนม หายใจเร็ว ตัวเย็น หรือมีไข้</li>
+            <li>ตัวเหลืองถึงฝ่ามือฝ่าเท้า หรือเหลืองมากขึ้นเร็ว</li>
+            <li>สะดือแดง บวม มีหนอง หรือมีกลิ่นผิดปกติ</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="guide-grid guide-set" data-set="pregnant" hidden>
+        <article class="guide-card">
+          <header><div class="icon">🤰</div><h4>หญิงตั้งครรภ์</h4></header>
+          <ul>
+            <li>ฝากครรภ์เร็วและต่อเนื่องตามนัด</li>
+            <li>กินอาหารครบ 5 หมู่ เสริมธาตุเหล็ก ไอโอดีน และโฟลิกตามคำแนะนำ</li>
+            <li>หลัง 28 สัปดาห์ นับลูกดิ้นทุกวัน หากดิ้นน้อยลงให้รีบปรึกษาเจ้าหน้าที่</li>
+          </ul>
+        </article>
+        <article class="guide-card">
+          <header><div class="icon">⚠</div><h4>อาการที่ต้องส่งต่อ</h4></header>
+          <ul>
+            <li>ปวดศีรษะ ตาพร่า จุกแน่นลิ้นปี่ หรือบวมมาก</li>
+            <li>เลือดออก น้ำเดิน เจ็บครรภ์ก่อนกำหนด</li>
+            <li>ไข้สูง หายใจลำบาก หรือทารกดิ้นลดลงชัดเจน</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="guide-grid guide-set" data-set="postpartum" hidden>
+        <article class="guide-card">
+          <header><div class="icon">💗</div><h4>หญิงหลังคลอด</h4></header>
+          <ul>
+            <li>ประเมินเลือดออก น้ำคาวปลา แผลฝีเย็บหรือแผลผ่าคลอด</li>
+            <li>ดูแลเต้านม ป้องกันหัวนมแตก คัดตึง และท่อน้ำนมอุดตัน</li>
+            <li>คัดกรองอารมณ์เศร้า เครียด นอนไม่หลับ หรือคิดทำร้ายตัวเอง</li>
+          </ul>
+        </article>
+        <article class="guide-card">
+          <header><div class="icon">🏥</div><h4>ส่งต่อทันที</h4></header>
+          <ul>
+            <li>เลือดออกมาก มีกลิ่นเหม็น ไข้ หนาวสั่น หรือปวดท้องรุนแรง</li>
+            <li>เต้านมแดงร้อน ปวดมาก มีไข้ หรือทารกดูดไม่ได้</li>
+            <li>ซึมเศร้ารุนแรง วิตกกังวลมาก หรือมีความคิดทำร้ายตนเอง/ลูก</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="record" class="screen tab">
+      <div class="topbar">
+        <div class="brand">
+          <div class="mark">+</div>
+          <div>
+            <h1>บันทึกลงเยี่ยม</h1>
+            <p>กรอกข้อมูลสำคัญระหว่างเยี่ยมบ้าน</p>
+          </div>
+        </div>
+      </div>
+
+      <section class="form-panel sync-panel" aria-label="ตั้งค่า Google Sheet" hidden>
+        <p>ปลายทาง Google Sheet: <span class="sheet-chip">อนามัยแม่และเด็ก 2569</span></p>
+        <div class="field">
+          <label for="scriptUrl">Google Apps Script Web App URL</label>
+          <input id="scriptUrl" placeholder="วาง URL ที่ลงท้ายด้วย /exec">
+        </div>
+        <div class="toolbar sync-actions">
+          <button class="ghost" type="button" id="syncPending">ส่งรายการค้าง</button>
+          <button class="ghost" type="button" id="setupSheet">เตรียมชีต</button>
+          <button class="primary" type="button" id="saveEndpoint">บันทึก URL</button>
+        </div>
+        <div class="status-line" id="syncStatus">ยังไม่ได้ตั้งค่า URL สำหรับส่งข้อมูลเข้า Google Sheet</div>
+      </section>
+
+      <form class="form-panel" id="visitForm">
+        <div class="field">
+          <label for="caseName">ชื่อแม่/ผู้รับบริการ</label>
+          <input id="caseName" name="caseName" placeholder="เช่น นางนภา คำใหญ่">
+        </div>
+        <div class="field">
+          <label for="caseType">กลุ่มที่เยี่ยม</label>
+          <select id="caseType" name="caseType">
+            <option>เด็กแรกเกิด</option>
+            <option>หญิงตั้งครรภ์</option>
+            <option>หญิงหลังคลอด</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="village">หมู่บ้าน/ที่อยู่</label>
+          <select id="village" name="village">
+            <option value="">เลือกหมู่บ้าน</option>
+            <optgroup label="นอกเขตเทศบาล">
+              <option>หมู่ 1 บ้านหัวสนาม</option>
+              <option>หมู่ 4 บ้านนาดี</option>
+              <option>หมู่ 5 บ้านห้วยยาง</option>
+              <option>หมู่ 6 บ้านห้วยม่วง</option>
+            </optgroup>
+            <optgroup label="เขตเทศบาล">
+              <option>หมู่ 2 บ้านคำเจริญ</option>
+              <option>หมู่ 3 บ้านชัยศรี</option>
+              <option>หมู่ 7 บ้านคำใหญ่</option>
+              <option>หมู่ 8 บ้านคำถาวร</option>
+              <option>หมู่ 9 บ้านโพธิ์ทอง</option>
+              <option>หมู่ 10 บ้านโคกป่ากุง</option>
+              <option>หมู่ 11 บ้านคำใหญ่</option>
+              <option>หมู่ 12 บ้านคำเจริญ</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <label>รายการประเมินสำคัญ</label>
+        <div class="checks">
+          <label class="check"><input type="checkbox" name="checklist" value="vital"><span>ประเมินสัญญาณอันตรายและอาการผิดปกติ</span></label>
+          <label class="check"><input type="checkbox" name="checklist" value="milk"><span>ให้คำแนะนำการเลี้ยงลูกด้วยนมแม่และการเข้าเต้า</span></label>
+          <label class="check"><input type="checkbox" name="checklist" value="growth"><span>ติดตามน้ำหนัก การขับถ่าย สะดือ และตัวเหลืองของทารก</span></label>
+          <label class="check"><input type="checkbox" name="checklist" value="mental"><span>ประเมินสุขภาพจิตแม่หลังคลอดและแรงสนับสนุนในครอบครัว</span></label>
+        </div>
+
+        <div class="field">
+          <label for="risk">ระดับเฝ้าระวัง</label>
+          <select id="risk" name="risk">
+            <option>ปกติ</option>
+            <option>ติดตามใกล้ชิด</option>
+            <option>ควรปรึกษา รพ.สต./เจ้าหน้าที่</option>
+            <option>ส่งต่อเร่งด่วน</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="note">บันทึกเพิ่มเติม</label>
+          <textarea id="note" name="note" placeholder="อาการที่พบ คำแนะนำที่ให้ นัดหมายครั้งต่อไป"></textarea>
+        </div>
+        <div class="toolbar">
+          <button class="ghost" type="button" id="clearForm">ล้างข้อมูล</button>
+          <button class="primary" type="submit">บันทึก</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="history" class="screen tab">
+      <div class="topbar">
+        <div class="brand">
+          <div class="mark">⌂</div>
+          <div>
+            <h1>ประวัติการเยี่ยม</h1>
+            <p>ข้อมูลที่บันทึกในเครื่องนี้</p>
+          </div>
+        </div>
+        <button class="round-btn" type="button" id="clearHistory" aria-label="ลบประวัติ">
+          <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="m19 6-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+        </button>
+      </div>
+      <div id="historyList" class="visit-list"></div>
+    </section>
+
+    <nav class="bottom-nav" aria-label="เมนูหลัก">
+      <button class="nav-btn active" type="button" data-open="home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m3 11 9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>
+        หน้าแรก
+      </button>
+      <button class="nav-btn" type="button" data-open="guide">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
+        คู่มือ
+      </button>
+      <button class="nav-btn" type="button" data-open="record">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 5v14M5 12h14"/></svg>
+        บันทึก
+      </button>
+      <button class="nav-btn" type="button" data-open="history">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 3v18h18"/><path d="M7 15h3v3H7zM12 10h3v8h-3zM17 6h3v12h-3z"/></svg>
+        ประวัติ
+      </button>
+    </nav>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="install-sheet" id="installSheet" hidden>
+    <section class="install-card" role="dialog" aria-modal="true" aria-labelledby="installTitle">
+      <h3 id="installTitle">ติดตั้ง MISS นมแม่</h3>
+      <p id="installHint">เพิ่มแอพไว้บนหน้าจอมือถือเพื่อเปิดใช้งานได้เหมือนแอพทั่วไป</p>
+      <ol class="install-steps" id="installSteps">
+        <li>เปิดหน้านี้ด้วย Chrome หรือ Safari</li>
+        <li>แตะปุ่มแชร์หรือเมนูของเบราว์เซอร์</li>
+        <li>เลือก เพิ่มไปยังหน้าจอโฮม</li>
+      </ol>
+      <div class="toolbar">
+        <button class="ghost" type="button" id="closeInstall">ปิด</button>
+        <button class="primary" type="button" id="installPrimary">ติดตั้ง</button>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const navButtons = document.querySelectorAll('[data-open]');
+    const toast = document.querySelector('#toast');
+    const form = document.querySelector('#visitForm');
+    const historyList = document.querySelector('#historyList');
+    const installButton = document.querySelector('#installApp');
+    const installSheet = document.querySelector('#installSheet');
+    const installPrimary = document.querySelector('#installPrimary');
+    const installHint = document.querySelector('#installHint');
+    const installSteps = document.querySelector('#installSteps');
+    const scriptUrlInput = document.querySelector('#scriptUrl');
+    const syncStatus = document.querySelector('#syncStatus');
+    const sheetUrl = 'https://docs.google.com/spreadsheets/d/1BovpoJrMmx3MXSjhfvtjw1PjkIjB312tNocf7posQUY/edit';
+    const sheetId = '1BovpoJrMmx3MXSjhfvtjw1PjkIjB312tNocf7posQUY';
+    const storageKey = 'miss-khamyai-visits';
+    const pendingKey = 'miss-khamyai-pending-visits';
+    const endpointKey = 'miss-khamyai-script-url';
+    const setupKey = 'miss-khamyai-sheet-setup-done';
+    const defaultScriptUrl = 'https://script.google.com/macros/s/AKfycbzRf51z7kSF2XzXrPkFJRffiLNCW_T9KPSnWJayqHGAngZPQqO1v7SpSCsz7UWtKF29/exec';
+    let deferredInstallPrompt = null;
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 1900);
+    }
+
+    function isStandalone() {
+      return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+    }
+
+    function isIos() {
+      return /iphone|ipad|ipod/i.test(window.navigator.userAgent);
+    }
+
+    function openInstallSheet() {
+      if (isIos()) {
+        installHint.textContent = 'สำหรับ iPhone หรือ iPad ให้เพิ่มแอพผ่านเมนูแชร์ของ Safari';
+        installSteps.innerHTML = '<li>เปิดด้วย Safari</li><li>แตะปุ่มแชร์</li><li>เลือก เพิ่มไปยังหน้าจอโฮม</li>';
+        installPrimary.textContent = 'รับทราบ';
+      } else {
+        installHint.textContent = 'หากเบราว์เซอร์ยังไม่แสดงหน้าต่างติดตั้ง ให้ใช้เมนูของ Chrome แล้วเลือกติดตั้งแอพ';
+        installSteps.innerHTML = '<li>เปิดด้วย Chrome</li><li>แตะเมนู ⋮</li><li>เลือก ติดตั้งแอพ หรือ เพิ่มไปยังหน้าจอหลัก</li>';
+        installPrimary.textContent = deferredInstallPrompt ? 'ติดตั้ง' : 'รับทราบ';
+      }
+      installSheet.hidden = false;
+    }
+
+    async function runInstallPrompt() {
+      if (isStandalone()) {
+        showToast('ติดตั้งแอพแล้ว');
+        return;
+      }
+      if (!deferredInstallPrompt) {
+        openInstallSheet();
+        return;
+      }
+      deferredInstallPrompt.prompt();
+      await deferredInstallPrompt.userChoice;
+      deferredInstallPrompt = null;
+      installSheet.hidden = true;
+    }
+
+    function openTab(id) {
+      tabs.forEach(tab => tab.classList.toggle('active', tab.id === id));
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.open === id);
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (id === 'history') renderHistory();
+      if (id === 'record') updateSyncStatus();
+    }
+
+    navButtons.forEach(button => {
+      button.addEventListener('click', () => openTab(button.dataset.open));
+    });
+
+    document.querySelectorAll('[data-guide]').forEach(button => {
+      button.addEventListener('click', () => {
+        const key = button.dataset.guide;
+        document.querySelectorAll('[data-guide]').forEach(item => item.classList.toggle('active', item === button));
+        document.querySelectorAll('.guide-set').forEach(set => {
+          const active = set.dataset.set === key;
+          set.hidden = !active;
+          set.classList.toggle('active', active);
+        });
+      });
+    });
+
+    function getVisits() {
+      try {
+        return JSON.parse(localStorage.getItem(storageKey)) || [];
+      } catch {
+        return [];
+      }
+    }
+
+    function saveVisits(visits) {
+      localStorage.setItem(storageKey, JSON.stringify(visits));
+    }
+
+    function getEndpoint() {
+      return localStorage.getItem(endpointKey) || defaultScriptUrl;
+    }
+
+    function getPending() {
+      try {
+        return JSON.parse(localStorage.getItem(pendingKey)) || [];
+      } catch {
+        return [];
+      }
+    }
+
+    function savePending(items) {
+      localStorage.setItem(pendingKey, JSON.stringify(items));
+      updateSyncStatus();
+    }
+
+    function updateSyncStatus() {
+      const endpoint = getEndpoint();
+      const pendingCount = getPending().length;
+      scriptUrlInput.value = endpoint;
+      syncStatus.textContent = `พร้อมส่งเข้า Google Sheet ด้วย URL ประจำ มีรายการรอส่ง ${pendingCount} รายการ`;
+    }
+
+    function riskClass(risk) {
+      if (risk.includes('ส่งต่อ')) return 'red';
+      if (risk.includes('ติดตาม') || risk.includes('ปรึกษา')) return 'yellow';
+      return 'green';
+    }
+
+    function renderHistory() {
+      const visits = getVisits();
+      if (!visits.length) {
+        historyList.innerHTML = '<div class="empty">ยังไม่มีบันทึกการเยี่ยม<br>เมื่อบันทึกแล้ว รายการจะมาแสดงที่นี่</div>';
+        return;
+      }
+      historyList.innerHTML = visits.map(visit => `
+        <article class="visit-card">
+          <div class="avatar">${visit.caseName.slice(0, 1) || 'ม'}</div>
+          <div>
+            <h4>${escapeHtml(visit.caseName || 'ไม่ระบุชื่อ')}</h4>
+            <p>${escapeHtml(visit.caseType)} • ${escapeHtml(visit.village || 'ไม่ระบุที่อยู่')}<br>${escapeHtml(visit.syncStatus || 'บันทึกในเครื่อง')} • ${escapeHtml(visit.note || 'ไม่มีบันทึกเพิ่มเติม')}</p>
+          </div>
+          <span class="tag ${riskClass(visit.risk)}">${escapeHtml(visit.risk)}</span>
+        </article>
+      `).join('');
+    }
+
+    async function postToGoogleScript(payload) {
+      const endpoint = getEndpoint();
+      if (!endpoint) return false;
+      try {
+        await fetch(endpoint, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'text/plain;charset=utf-8'
+          },
+          body: JSON.stringify(payload)
+        });
+        return true;
+      } catch {
+        return false;
+      }
+    }
+
+    async function setupGoogleSheet(options = {}) {
+      const silent = options.silent === true;
+      const endpoint = getEndpoint();
+      if (!endpoint) {
+        if (!silent) showToast('กรุณาบันทึก Web App URL ก่อน');
+        updateSyncStatus();
+        return false;
+      }
+      const sent = await postToGoogleScript({
+        action: 'setup',
+        sheetId,
+        sheetUrl,
+        app: 'MISS นมแม่ ตำบลคำใหญ่'
+      });
+      if (sent) localStorage.setItem(setupKey, 'true');
+      if (!silent) showToast(sent ? 'เตรียม Google Sheet แล้ว' : 'ยังเชื่อมต่อ Google Sheet ไม่สำเร็จ');
+      updateSyncStatus();
+      return sent;
+    }
+
+    async function sendToGoogleSheet(visit) {
+      return postToGoogleScript({
+        sheetId,
+        sheetUrl,
+        app: 'MISS นมแม่ ตำบลคำใหญ่',
+        ...visit
+      });
+    }
+
+    async function syncPendingVisits() {
+      const pending = getPending();
+      if (!pending.length) {
+        showToast('ไม่มีรายการค้างส่ง');
+        return;
+      }
+      if (!getEndpoint()) {
+        showToast('กรุณาตั้งค่า Web App URL ก่อน');
+        updateSyncStatus();
+        return;
+      }
+      const stillPending = [];
+      const sentIds = [];
+      for (const visit of pending) {
+        const sent = await sendToGoogleSheet(visit);
+        if (sent) sentIds.push(visit.createdAt);
+        else stillPending.push(visit);
+      }
+      savePending(stillPending);
+      if (sentIds.length) {
+        const visits = getVisits().map(visit =>
+          sentIds.includes(visit.createdAt) ? { ...visit, syncStatus: 'ส่งเข้า Google Sheet แล้ว' } : visit
+        );
+        saveVisits(visits);
+        renderHistory();
+      }
+      showToast(`ส่งสำเร็จ ${sentIds.length} รายการ`);
+    }
+
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>"']/g, char => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+      })[char]);
+    }
+
+    form.addEventListener('submit', async event => {
+      event.preventDefault();
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+      const checklist = formData.getAll('checklist');
+      const checked = [...form.querySelectorAll('input[name="checklist"]:checked')].length;
+      const visits = getVisits();
+      const visit = {
+        ...data,
+        checklist,
+        checked,
+        createdAt: new Date().toISOString(),
+        syncStatus: 'กำลังส่งเข้า Google Sheet'
+      };
+      const sent = await sendToGoogleSheet(visit);
+      visit.syncStatus = sent ? 'ส่งเข้า Google Sheet แล้ว' : 'รอส่งเข้า Google Sheet';
+      visits.unshift(visit);
+      saveVisits(visits.slice(0, 30));
+      if (!sent) savePending([visit, ...getPending()].slice(0, 100));
+      form.reset();
+      showToast(sent ? 'บันทึกและส่งเข้า Google Sheet แล้ว' : 'บันทึกในเครื่องแล้ว รอส่งเข้า Google Sheet');
+      openTab('history');
+    });
+
+    document.querySelector('#clearForm').addEventListener('click', () => {
+      form.reset();
+      showToast('ล้างฟอร์มแล้ว');
+    });
+
+    document.querySelector('#clearHistory').addEventListener('click', () => {
+      saveVisits([]);
+      renderHistory();
+      showToast('ลบประวัติในเครื่องแล้ว');
+    });
+
+    document.querySelector('#saveEndpoint').addEventListener('click', async () => {
+      const url = scriptUrlInput.value.trim();
+      if (url && !url.startsWith('https://script.google.com/')) {
+        showToast('URL ต้องเป็น Google Apps Script Web App');
+        return;
+      }
+      localStorage.setItem(endpointKey, url);
+      updateSyncStatus();
+      showToast(url ? 'บันทึก URL แล้ว' : 'ล้าง URL แล้ว');
+      if (url) await setupGoogleSheet();
+    });
+
+    document.querySelector('#syncPending').addEventListener('click', syncPendingVisits);
+    document.querySelector('#setupSheet').addEventListener('click', setupGoogleSheet);
+    installButton.addEventListener('click', runInstallPrompt);
+    installPrimary.addEventListener('click', runInstallPrompt);
+    document.querySelector('#closeInstall').addEventListener('click', () => {
+      installSheet.hidden = true;
+    });
+    installSheet.addEventListener('click', event => {
+      if (event.target === installSheet) installSheet.hidden = true;
+    });
+
+    window.addEventListener('beforeinstallprompt', event => {
+      event.preventDefault();
+      deferredInstallPrompt = event;
+      installButton.hidden = false;
+    });
+
+    window.addEventListener('appinstalled', () => {
+      deferredInstallPrompt = null;
+      installButton.hidden = true;
+      installSheet.hidden = true;
+      showToast('ติดตั้งแอพเรียบร้อย');
+    });
+
+    renderHistory();
+    updateSyncStatus();
+    if (isStandalone()) installButton.hidden = true;
+    if (!localStorage.getItem(setupKey)) {
+      setupGoogleSheet({ silent: true });
+    }
+
+    if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    }
+  </script>
+</body>
+</html>
